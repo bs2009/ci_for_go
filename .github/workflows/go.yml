@@ -39,8 +39,8 @@ jobs:
 
       - name: Test
         run: |
-          #gotestsum --format=standard-verbose --junitfile=junit.xml ./...
-          go test ./... -v 2>&1 | go-junit-report -set-exit-code > junit.xml
+          gotestsum --format=standard-verbose --junitfile=junit.xml ./...
+          #go test ./... -v 2>&1 | go-junit-report -set-exit-code > junit.xml
           
       - name: List reports
         if: success() || failure()
