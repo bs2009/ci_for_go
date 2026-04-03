@@ -22,8 +22,9 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version-file: "go.mod"
+          go-version: "1.20.x"
           cache: true
+
 
       - name: Revive Action
         uses: morphy2k/revive-action@v2.4.1
@@ -38,8 +39,8 @@ jobs:
       - name: Staticcheck
         uses: dominikh/staticcheck-action@v1.3.0
         with:
-          version: "2023.1.7"
           install-go: false
+          version: "2023.1.7"          
 
       - name: Build
         run: |
