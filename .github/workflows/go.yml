@@ -39,7 +39,12 @@ jobs:
       - name: Test
         run: |
           gotestsum --format=standard-verbose --junitfile=junit.xml ./...
-
+      - name: List reports
+        if: success() || failure()
+        run: |
+          ls -la
+          find . -maxdepth 3 -name "*.xml" -print
+          
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v3
         if: success() || failure()
