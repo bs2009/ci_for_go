@@ -27,9 +27,19 @@ jobs:
 
       - name: Revive Action
         uses: morphy2k/revive-action@v2.4.1
+      - name: Debug staticcheck (print output)
+        run: |
+          go env
+          go version
+          go install honnef.co/go/tools/cmd/staticcheck@latest
+          $(go env GOPATH)/bin/staticcheck -version
+          $(go env GOPATH)/bin/staticcheck ./...
 
       - name: Staticcheck
         uses: dominikh/staticcheck-action@v1.3.0
+        with:
+          version: "2023.1.7"
+          install-go: false
 
       - name: Build
         run: |
